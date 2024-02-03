@@ -3,18 +3,14 @@
 ## Introduction
 WhatsApp Parser is a tool designed to simplify the process of parsing text data extracted from WhatsApp conversations. It aims to provide users with an easy-to-use interface for extracting meaningful information from chat logs, such as timestamps, sender names, and messages.
 
+```
+pip install whatsapp-parse
+```
+
 ## Features
 - Extract conversation data including date, time, sender, and message content.  
 - Parse chat logs into a Pandas DataFrame
 - Directly output a CSV file from the command line.
-
-## Getting Started
-To get started with WhatsApp Chat Parser, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/HassnHamada/whatsapp-chat-parser.git`
-2. Navigate to the project directory: `cd whatsapp-chat-parser`  
-3. Install the required dependencies: `pip install -r requirements.txt`
-4. Have FUN
 
 
 ## Usage
