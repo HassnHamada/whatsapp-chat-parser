@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-setup(name='whatsapp_parser',
+setup(name='whatsapp_parse',
       license='MIT',
       version='0.1',
       author='Hassn Hamada',
