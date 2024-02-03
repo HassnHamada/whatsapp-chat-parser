@@ -62,8 +62,8 @@ class TestParser(unittest.TestCase):
             for i in range(1, conversation_count):
                 group_1 = df[df['conversation_id'] == i]
                 group_2 = df[df['conversation_id'] == i + 1]
-                self.assertTrue(group_1.size > 0, i)
-                self.assertTrue(group_2.size > 0, i)
+                self.assertTrue(len(group_1) > 0, i)
+                self.assertTrue(len(group_2) > 0, i)
                 time_diff = group_2.iloc[0]['datetime'] - group_1.iloc[-1]['datetime']
                 self.assertTrue(time_diff.total_seconds() > time_threshold_s, f'\nGroup_1\n{group_1}\nGroup_2\n{group_2}\nTime\t{time_diff}\t{time_diff.total_seconds()}')
 
