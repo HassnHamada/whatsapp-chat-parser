@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(name='whatsapp_parse',
       license='MIT',
-      version='0.2',
+      version='0.2.1',
       author='Hassn Hamada',
       author_email='hassneltokhy4@gmail.com',
       description='A parsing library for WhatsApp chat logs',
