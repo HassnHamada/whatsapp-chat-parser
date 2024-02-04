@@ -189,7 +189,7 @@ def clean_up(df: pd.DataFrame, /, *,
         df['message'] = df['message'].apply(lambda x: re.sub(url_pattern, '', x).strip())
     # Removes rows where the 'message' column contains only whitespace.
     df = df[df['message'].apply(lambda x: re.fullmatch(r'\s*', x)).isnull()]
-    return df
+    return df.reset_index(drop=True, inplace=False)
 
 
 """
