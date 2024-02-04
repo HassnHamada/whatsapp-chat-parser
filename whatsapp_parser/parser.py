@@ -132,6 +132,8 @@ def parse_whatsapp_log(path: str, encoding: str = 'utf-8', output_path: str = No
         The file encoding. Defaults to 'utf-8'.
     output_path : str, optional
         Path to output CSV file. Defaults to input file path with .csv extension.
+    time : int, optional
+        The time interval in seconds to aggregate messages. Defaults to 300.
 
     Raises
     ------
