@@ -186,7 +186,7 @@ def clean_up(df: pd.DataFrame, /, *,
     if clean_media_omitted:
         df = df[df['message'] != '<Media omitted>']
     if clean_urls:
-        df['message'] = df['message'].apply(lambda x: re.sub(url_pattern, '', x).strip())
+        df.loc[:, 'message'] = df['message'].apply(lambda x: re.sub(url_pattern, '', x).strip())
     # Removes rows where the 'message' column contains only whitespace.
     df = df[df['message'].apply(lambda x: re.fullmatch(r'\s*', x)).isnull()]
     return df.reset_index(drop=True, inplace=False)
