@@ -159,6 +159,39 @@ def parse_whatsapp_log(path: str, encoding: str = 'utf-8', output_path: str = No
         f.write(df.to_csv(index=False, lineterminator='\n'))
 
 
+def clean_up(df: pd.DataFrame, /, *,
+             clean_media_omitted: bool = True,
+             clean_urls: bool = True,
+             url_pattern: str = r"https?://\S+") -> pd.DataFrame:
+    """
+    Clean up the DataFrame df by removing omitted media and URLs.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The DataFrame to clean up.
+    clean_media_omitted : bool, optional
+        Whether to remove rows with omitted media. Defaults to True.
+    clean_urls : bool, optional 
+        Whether to remove URLs that match the url_pattern regex. Defaults to True.
+    url_pattern : str, optional
+        The regex pattern for matching URLs to remove. Defaults to r"https?://\S+".
+
+    Returns
+    -------
+    DataFrame
+        The cleaned up DataFrame.
+    """
+
+    if clean_media_omitted:
+        df = df[df['message'] != '<Media omitted>']
+    if clean_urls:
+        df['message'] = df['message'].apply(lambda x: re.sub(url_pattern, '', x).strip())
+    # Removes rows where the 'message' column contains only whitespace.
+    df = df[df['message'].apply(lambda x: re.fullmatch(r'\s*', x)).isnull()]
+    return df
+
+
 """
 Run to parse a WhatsApp log file.
 """
