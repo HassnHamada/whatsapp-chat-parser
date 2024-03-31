@@ -2,6 +2,7 @@ import argparse
 import os
 import pandas as pd
 import re
+from dateutil.parser import parse
 
 # Define the regular expression pattern for WhatsApp chat lines
 whatsapp_line_pattern = r"(\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s[APap][Mm])\s-\s(.*?):\s(.*)"
@@ -86,8 +87,7 @@ def chat_to_dataframe(chat_lines: list[str]) -> pd.DataFrame:
                 parsed_data[-1]['message'] += ' ' + parsed_line['message']
     parsed_data = pd.DataFrame(parsed_data)
 
-    parsed_data['datetime'] = pd.to_datetime(parsed_data['datetime'],
-                                             format="%m/%d/%y, %I:%M %p")
+    parsed_data['datetime'] = parsed_data['datetime'].apply(parse)
     return parsed_data
 
 

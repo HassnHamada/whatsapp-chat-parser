@@ -13,7 +13,6 @@ pip install whatsapp-parse
 - Directly output a CSV file from the command line.
 
 ## Future Updates
-- Support for additional date and time formats. 
 - Add more output formats.
 - Add media attachments handling.
 
